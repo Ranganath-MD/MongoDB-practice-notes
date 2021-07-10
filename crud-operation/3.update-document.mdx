@@ -1,0 +1,55 @@
+# Update Operations
+
+Update operations modify existing documents in a collection. MongoDB provides the following methods to update documents of a collection:
+
+`db.collection.updateOne()` `db.collection.updateMany()`
+`db.collection.replaceOne()`
+
+### updateOne()
+
+Updates a single document within the collection based on the filter.
+
+let's update the movie name which has a name "Thor" to "Thor: Ragnarok"
+
+```
+db.movies.updateOne(
+  { name: "Thor" }, 
+  { $set: { name: "Thor: Ragnarok" }}
+)
+```
+
+>Reference: [updateOne() method in MongoDB](https://docs.mongodb.com/manual/reference/method/db.collection.updateOne/#mongodb-method-db.collection.updateOne)
+
+### updateMany()
+
+Updates all documents that match the specified filter for a collection.
+
+let's update movies name which are released in 2013
+
+```
+db.movies.updateMany(
+  { date: "2013" }, 
+  { $set: { name: "Marvel's The Avengers" }}
+)
+```
+Now you can see the records which has date 2013 has been updated.
+
+>Reference: [updateMany() method in MongoDB](https://docs.mongodb.com/manual/reference/method/db.collection.updateMany/#mongodb-method-db.collection.updateMany)
+
+### replaceOne
+
+Replaces a single document within the collection based on the filter.
+
+replaceOne() **replaces the first matching document** in the collection that matches the filter, using the replacement document.
+
+```
+db.movies.replaceOne(
+  { date: "2011" }, 
+  { name: "Thor:::::::" }
+)
+```
+
+>Reference: [replaceOne() in MongoDB](https://docs.mongodb.com/manual/reference/method/db.collection.replaceOne/)
+
+
+
